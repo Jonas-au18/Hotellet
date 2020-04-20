@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "AdminPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div>
+        <button type="submit" asp-action="Test" asp-controller="Kitchen">Kitchen View</button>
+    </div>
+    <div>
+        <button type="submit" asp-controller="Reception" asp-action="Index">Reception View</button>
+    </div>
+    <div>
+        <button type="submit" asp-controller="Waiter" asp-action="Waiter">Waiter View</button>
+    </div>
+    <div>
+        <button type="submit" asp-area="Identity" asp-page="/Account/Register">Register new user</button>
+    </div>
+</div>
+

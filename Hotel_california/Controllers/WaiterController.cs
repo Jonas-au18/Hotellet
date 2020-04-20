@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Hotel_california.Data;
 using Hotel_california.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hotel_california.Controllers
-{
+{   [Authorize("isWaiter")]
     public class WaiterController : Controller
     {
         private readonly ApplicationDbContext _context;

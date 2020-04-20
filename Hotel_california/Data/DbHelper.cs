@@ -89,7 +89,18 @@ namespace Hotel_california.Data
         }
 
         public static void SeedUsers(UserManager<ApplicationUser> userManager, ILogger log,ApplicationDbContext context)
-        { 
+        {
+            List<Claim> claims = new List<Claim>();
+            var adminclaim = new Claim("Admin", "Yes");
+            var kitchenClaim = new Claim("Kitchen", "Yes");
+            var WaiterClaim = new Claim("Waiter", "Yes");
+            var ReceptionClaim = new Claim("Reception", "Yes");
+            claims.Add(adminclaim);
+            claims.Add(kitchenClaim);
+            claims.Add(WaiterClaim);
+            claims.Add(ReceptionClaim);
+
+
             const string adminUsername = "Admin";
             const string adminPassword = "Password1";
 
@@ -106,13 +117,12 @@ namespace Hotel_california.Data
                     user,adminPassword).Result;
                 if (result.Succeeded)
                 {
-                    var adminclaim = new Claim("Admin", "Yes");
-                    userManager.AddClaimAsync(user, adminclaim).Wait();
+                    userManager.AddClaimsAsync(user, claims).Wait();
                 }
             }
 
             const string KitchenUsername = "Kitchen";
-            const string KitchenPassword = "Password2";
+            const string KitchenPassword = "Password1";
             if (userManager.FindByNameAsync(KitchenUsername).Result == null)
             {
                 ApplicationUser user = new ApplicationUser
@@ -125,8 +135,7 @@ namespace Hotel_california.Data
                     user, KitchenPassword).Result;
                 if (result.Succeeded)
                 {
-                    var kitchenclaim = new Claim("Kitchen","Yes");
-                    userManager.AddClaimAsync(user, kitchenclaim).Wait();
+                    userManager.AddClaimAsync(user, kitchenClaim).Wait();
                 }
 
             }
@@ -144,8 +153,7 @@ namespace Hotel_california.Data
                     user, WaiterPassword).Result;
                 if (result.Succeeded)
                 {
-                    var Waiterclaim = new Claim("Waiter","Yes");
-                    userManager.AddClaimAsync(user, Waiterclaim).Wait();
+                    userManager.AddClaimAsync(user, WaiterClaim).Wait();
                 }
             }
 
@@ -162,7 +170,6 @@ namespace Hotel_california.Data
                     user, ReceptionPassword).Result;
                 if (result.Succeeded)
                 {
-                    var ReceptionClaim = new Claim("Reception","Yes");
                     userManager.AddClaimAsync(user, ReceptionClaim).Wait();
                 }
             }
