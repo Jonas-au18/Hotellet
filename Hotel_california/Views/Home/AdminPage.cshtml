@@ -4,23 +4,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-    <div>
+<div class="container">
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
         <form asp-action="Test" asp-controller="Kitchen">
             <button type="submit" class="nav-link btn btn-link text-dark">Kitchen View</button>
         </form>
     </div>
-    <div>
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
         <form class="form-inline" asp-controller="Reception" asp-action="Index">
             <button type="submit" class="nav-link btn btn-link text-dark">Reception View</button>
         </form>
     </div>
-    <div>
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
         <form class="form-inline" asp-controller="Waiter" asp-action="Waiter">
             <button type="submit" class="nav-link btn btn-link text-dark">Waiter View</</button>
         </form>
     </div>
-    <div>
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Register">
             <button type="submit" class="nav-link btn btn-link text-dark">Register new user</button>
         </form>
