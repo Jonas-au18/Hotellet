@@ -4,54 +4,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-    <form method="post">
+<form method="post">
         <label asp-for="Day">Enter day</label>
-        <input asp-for="Day" class="form-control" />
+        <input class="form-control  w3-input-border w3-animate-input" style="width:135px" asp-for="Day" class="form-control" />
         <label asp-for="Month">Enter month</label>
-        <input asp-for="Month" class="form-control"/>
-        <input href="#" class="date-button" type="submit" />
-    </form>
-</div>
+        <input class="form-control  w3-input-border w3-animate-input" style="width:135px" asp-for="Month" class="form-control" />
+        <br/>
+        <input href="#" class="w3-btn w3-light-grey w3-hover-green w3-round" type="submit" />
+</form>
 
-<div>
-        <div>
-            <p>Expected total</p>
-            <p>
+
+<br />
+<table class="table border-bottom">
+    <thead>
+        <tr>
+            <th>Expected total</th>
+            <th>Expected adults</th>
+            <th>Expected Kids</th>
+            <th>Checked in total</th>
+            <th>Expected adults</th>
+            <th>Expected Kids</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: center">
                 @Html.DisplayFor(model => Model.ExpectedTotal)
-            </p>
-            <div />
-            <div>
-                <p>Expected adults</p>
-                <p>
-                    @Html.DisplayFor(model => model.ExpectedAdults)
-                </p>
-            </div>
-            <div>
-                <p>Expected Kids</p>
-                <p>
-                    @Html.DisplayFor(model => model.ExpectedKids)
-                </p>
-            </div>
-            <div>
-                <p>Checked in total</p>
-                <p>
-                    @Html.DisplayFor(model => model.CheckedInTotal)
-                </p>
+            </td>
+            <td style="text-align: center">
+                @Html.DisplayFor(model => model.ExpectedAdults)
+            </td>
+            <td style="text-align: center">
+                @Html.DisplayFor(model => model.ExpectedKids)
+            </td>
+            <td style="text-align: center">
+                @Html.DisplayFor(model => model.CheckedInTotal)
+            </td>
+            <td style="text-align: center">
+                @Html.DisplayFor(model => model.CheckedInAdults)
+            </td>
+            <td style="text-align: center">
+                @Html.DisplayFor(model => model.CheckedInKids)
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-            </div>
-            <div>
-                <p>Expected adults</p>
-                <p>
-                    @Html.DisplayFor(model => model.CheckedInAdults)
-                </p>
-
-            </div>
-            <div>
-                <p>Expected Kids</p>
-                <p>
-                    @Html.DisplayFor(model => model.CheckedInKids)
-                </p>
-            </div>
-        </div>
-    </div>

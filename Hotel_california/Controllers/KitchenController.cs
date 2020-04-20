@@ -23,6 +23,12 @@ namespace Hotel_california.Controllers
         
             return View();
         }
+        public IActionResult Test2()
+        {
+
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Test([Bind("Day,Month")]DinnerPlan request)
         {
