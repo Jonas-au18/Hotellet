@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -10,6 +13,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Hotel_california.Data;
 using Hotel_california.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,6 +33,12 @@ namespace Hotel_california
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+               
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -65,9 +75,10 @@ namespace Hotel_california
                 options.Password.RequiredUniqueChars = 1;
             });
             services.AddControllersWithViews();
-            services.AddRazorPages().AddRazorOptions(options =>
+            services.AddRazorPages().AddRazorPagesOptions(options =>
             {
-            });
+                options.Conventions.AddPageRoute("/Account/Login", "");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,7 +103,7 @@ namespace Hotel_california
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            DbHelper.SeedData(context, userManager, log);
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -100,7 +111,7 @@ namespace Hotel_california
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-            DbHelper.SeedData(context, userManager, log);
+           
         }
     }
 }

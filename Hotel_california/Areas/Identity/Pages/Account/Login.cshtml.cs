@@ -77,28 +77,11 @@ namespace Hotel_california.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(Input.Username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(Input.Username, Input.Password, false, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    if (User.HasClaim("Waiter", "Yes"))
-                    {
-                        returnUrl = Url.Action("WaiterView", "Waiter");
-                        return LocalRedirect(returnUrl);
-                    }
-
-                    if (User.HasClaim("Reception", "Yes"))
-                    {
-                        returnUrl = Url.Action("Index", "Reception");
-                        return LocalRedirect(returnUrl);
-                    }
-
-                    if (User.HasClaim("Kitchen", "Yes"))
-                    {
-                        returnUrl = Url.Action("KitchenView", "Kitchen");
-                        return LocalRedirect(returnUrl);
-                    }
-                    return LocalRedirect(returnUrl);
+                    return RedirectToPage("./LoginConfirm");
                 }
 
                 if (result.IsLockedOut)

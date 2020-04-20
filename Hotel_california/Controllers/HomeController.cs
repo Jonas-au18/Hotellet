@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Hotel_california.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hotel_california.Controllers
 {
@@ -20,7 +21,7 @@ namespace Hotel_california.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return LocalRedirect("/Identity/Account/Login");
         }
 
         public IActionResult Privacy()

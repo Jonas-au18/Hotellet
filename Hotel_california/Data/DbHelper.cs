@@ -13,7 +13,7 @@ namespace Hotel_california.Data
         public static void SeedData(ApplicationDbContext context, UserManager<ApplicationUser> userManager, ILogger log)
         {
             Seed(context, log);
-            SeedUsers(userManager, log);
+            SeedUsers(userManager, log,context);
         }
 
         private static void Seed(ApplicationDbContext context, ILogger log)
@@ -88,17 +88,18 @@ namespace Hotel_california.Data
             }
         }
 
-        public static async Task SeedUsers(UserManager<ApplicationUser> userManager, ILogger log)
+        public static void SeedUsers(UserManager<ApplicationUser> userManager, ILogger log,ApplicationDbContext context)
         { 
             const string adminUsername = "Admin";
             const string adminPassword = "Password1";
 
-            if (userManager.FindByNameAsync(adminUsername) == null)
+            if (userManager.FindByNameAsync(adminUsername).Result == null)
             {
                 log.LogWarning("Seeding the admin user");
                 ApplicationUser user = new ApplicationUser
                 {
                     UserName = adminUsername,
+                    Email = "",
                     Name = "SystemAdmin",
                 };
                 IdentityResult result = userManager.CreateAsync(
@@ -107,6 +108,62 @@ namespace Hotel_california.Data
                 {
                     var adminclaim = new Claim("Admin", "Yes");
                     userManager.AddClaimAsync(user, adminclaim).Wait();
+                }
+            }
+
+            const string KitchenUsername = "Kitchen";
+            const string KitchenPassword = "Password2";
+            if (userManager.FindByNameAsync(KitchenUsername).Result == null)
+            {
+                ApplicationUser user = new ApplicationUser
+                {
+                    UserName = KitchenUsername,
+                    Email = "",
+                    Name = "KitchenStaff"
+                };
+                IdentityResult result = userManager.CreateAsync(
+                    user, KitchenPassword).Result;
+                if (result.Succeeded)
+                {
+                    var kitchenclaim = new Claim("Kitchen","Yes");
+                    userManager.AddClaimAsync(user, kitchenclaim).Wait();
+                }
+
+            }
+
+            const string WaiterUsername = "Waiter";
+            const string WaiterPassword = "Password1";
+            if (userManager.FindByNameAsync(WaiterUsername).Result == null)
+            {
+                ApplicationUser user = new ApplicationUser
+                {
+                    UserName = WaiterUsername,
+                    Name = "Waiterstaff"
+                };
+                IdentityResult result = userManager.CreateAsync(
+                    user, WaiterPassword).Result;
+                if (result.Succeeded)
+                {
+                    var Waiterclaim = new Claim("Waiter","Yes");
+                    userManager.AddClaimAsync(user, Waiterclaim).Wait();
+                }
+            }
+
+            const string ReceptionUsername = "Reception";
+            const string ReceptionPassword = "Password1";
+            if (userManager.FindByNameAsync(ReceptionUsername).Result == null)
+            {
+                ApplicationUser user = new ApplicationUser
+                {
+                    UserName = ReceptionUsername,
+                    Name = "Receptionist"
+                };
+                IdentityResult result = userManager.CreateAsync(
+                    user, ReceptionPassword).Result;
+                if (result.Succeeded)
+                {
+                    var ReceptionClaim = new Claim("Reception","Yes");
+                    userManager.AddClaimAsync(user, ReceptionClaim).Wait();
                 }
             }
         }
