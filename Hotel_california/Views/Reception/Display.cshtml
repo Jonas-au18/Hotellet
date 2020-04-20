@@ -1,0 +1,35 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model IEnumerable<Booking>
+@{
+    ViewData["Title"] = "Display";
+}
+
+
+<div>
+    <form method="post">
+        <label for="day">Enter day</label>
+        <input for="day" type="number" id="day" name="day"/>
+        <label for="month">Enter month</label>
+        <input for="month" type="number" id="month" name="month"/>
+            <input href="#" type="submit" />
+    </form>
+</div>
+
+<div>
+    <table class="table">
+        <thread>
+            <tr>
+                @Html.DisplayNameFor(model => model.RoomNr)
+            </tr>
+        </thread>
+    </table>
+</div>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelitem=>item.RoomNr)
+        </td>
+    </tr>
+}

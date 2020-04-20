@@ -1,0 +1,57 @@
+﻿@model DinnerPlan
+@{
+    ViewData["Title"] = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <form method="post">
+        <label asp-for="Day">Enter day</label>
+        <input asp-for="Day" class="form-control" />
+        <label asp-for="Month">Enter month</label>
+        <input asp-for="Month" class="form-control"/>
+        <input href="#" class="date-button" type="submit" />
+    </form>
+</div>
+
+<div>
+        <div>
+            <p>Expected total</p>
+            <p>
+                @Html.DisplayFor(model => Model.ExpectedTotal)
+            </p>
+            <div />
+            <div>
+                <p>Expected adults</p>
+                <p>
+                    @Html.DisplayFor(model => model.ExpectedAdults)
+                </p>
+            </div>
+            <div>
+                <p>Expected Kids</p>
+                <p>
+                    @Html.DisplayFor(model => model.ExpectedKids)
+                </p>
+            </div>
+            <div>
+                <p>Checked in total</p>
+                <p>
+                    @Html.DisplayFor(model => model.CheckedInTotal)
+                </p>
+
+            </div>
+            <div>
+                <p>Expected adults</p>
+                <p>
+                    @Html.DisplayFor(model => model.CheckedInAdults)
+                </p>
+
+            </div>
+            <div>
+                <p>Expected Kids</p>
+                <p>
+                    @Html.DisplayFor(model => model.CheckedInKids)
+                </p>
+            </div>
+        </div>
+    </div>

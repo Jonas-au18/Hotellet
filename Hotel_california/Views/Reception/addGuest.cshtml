@@ -1,0 +1,27 @@
+﻿@model Guest
+@{
+    ViewData["Title"] = "addGuest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <form method="post">
+        <div>
+            <label asp-for="FName">Enter firstname</label>
+            <input asp-for="FName" />
+        </div>
+        <div>
+            <label asp-for="LName">Enter lastname</label>
+            <input asp-for="LName" />
+        </div>
+        <div>
+            <label asp-for="RoomNum">Enter room number</label>
+            <input asp-for="RoomNum" />
+        </div>
+        <div>
+            <label asp-for="Age">Enter age</label>
+            <input asp-for="Age" />
+        </div>
+        <input href="#" class="date-button" type="submit" />
+    </form>
+</div>

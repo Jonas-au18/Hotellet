@@ -1,0 +1,181 @@
+﻿@model DinnerPlan
+@{
+    ViewData["Title"] = "Kitchen";
+}
+
+<body onload="generateMonth()">
+    <div class="container">
+        <div class="calendar">
+            <div class="front">
+                <div class="current-date">
+                    <h1 id="Day"></h1>
+                    <h1 id="Month"></h1>
+                </div>
+
+                <div class="current-month">
+                    <ul class="week-days">
+                        <li>MON</li>
+                        <li>TUE</li>
+                        <li>WED</li>
+                        <li>THU</li>
+                        <li>FRI</li>
+                        <li>SAT</li>
+                        <li>SUN</li>
+                    </ul>
+                    <div class="weeks">
+                        <div class="first" id="weekone">
+                        </div>
+
+                        <div class="second" id="weektwo">
+                        </div>
+
+                        <div class="third" id="weekthree">
+                        </div>
+
+                        <div class="fourth" id="weekfour">
+                        </div>
+
+                        <div class="fifth" id="weekfive">
+                        </div>
+                        <button class="button" onclick="nextMonth()">Next month</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back">
+                <div class="info">
+
+                    <p>
+                        Expected Guests: <span id="numOfGuests"></span>
+                    </p>
+                    <p>
+                        Expected Adults: <span id="numOfAdults"></span>
+                    </p>
+
+                    <p>
+                        Expected Kids: <span id="numOfKids"></span>
+                    </p>
+
+                    <p>
+                        Checked in total: <span id="checkTotal"></span>
+                    </p>
+                    <p>
+                        Checked in adults: <span id="checkAdults"></span>
+                    </p>
+                    <p>
+                        Checked in kids: <span id="checkKids"></span>
+                    </p>
+                </div>
+
+                <div class="actions">
+                    <button class="dismiss">
+                        Go back <i class="ion-android-close"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    var date = new Date();
+    var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    var Months = [
+        "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
+        "December"
+    ];
+    var month = date.getMonth();
+    var year = date.getFullYear();
+    document.getElementById("Day").innerHTML = date.getDate() + " " + days[date.getDay()];
+    document.getElementById("Month").innerHTML = Months[date.getMonth()] + " " + date.getFullYear();
+
+    function generateMonth() {
+        var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var displayLastMonth = 35 - daysInMonth[month];
+        var CheckDate = displayLastMonth;
+        var span = "";
+        for (var i = 1; i <= 7; i++) {
+            if (displayLastMonth != 0) {
+                var printDate = (daysInMonth[month - 1] - displayLastMonth);
+                if (month == 0) {
+                    printDate = (daysInMonth[11] - displayLastMonth);
+                } else {
+                    printDate = (daysInMonth[month - 1] - displayLastMonth);
+                }
+                span += '<span class="last-month">' + printDate + '</span>';
+                displayLastMonth -= 1;
+            }
+            else if (i === date.getDate() + CheckDate && month === date.getMonth()) {
+                span += '<span class="active">' + (i - CheckDate) + '</span>';
+            } else {
+                span += '<span>' + (i - CheckDate) + '</span>';
+            }
+        }
+        document.getElementById("weekone").innerHTML = span;
+        span = "";
+        for (var i = 8; i <= 14; i++) {
+            if (i === date.getDate() + CheckDate && month === date.getMonth()) {
+                span += '<span class="active">' + (i - CheckDate) + '</span>';
+            } else {
+                span += '<span>' + (i - CheckDate) + '</span>';
+            }
+        }
+        document.getElementById("weektwo").innerHTML = span;
+        span = "";
+        for (var i = 15; i <= 21; i++) {
+            if (i === date.getDate() + CheckDate && month === date.getMonth()) {
+                span += '<span class="active">' + (i - CheckDate) + '</span>';
+            } else {
+                span += '<span>' + (i - CheckDate) + '</span>';
+            }
+        }
+        document.getElementById("weekthree").innerHTML = span;
+        span = "";
+        for (var i = 22; i < 28; i++) {
+            if (i === date.getDate() + CheckDate && month === date.getMonth()) {
+                span += '<span class="active">' + (i - CheckDate) + '</span>';
+            } else {
+                span += '<span>' + (i - CheckDate) + '</span>';
+            }
+        }
+        document.getElementById("weekfour").innerHTML = span;
+        span = "";
+        for (var i = 29; i <= 35; i++) {
+            if (i === date.getDate() + CheckDate && month === date.getMonth() && year === date.getFullYear()) {
+                span += '<span class="active">' + (i - CheckDate) + '</span>';
+            } else {
+                span += '<span>' + (i - CheckDate) + '</span>';
+            }
+        }
+        document.getElementById("weekfive").innerHTML = span;
+
+        app.settings.container = this.settings.container;
+        app.settings.calendar = this.settings.calendar;
+        app.settings.days = this.settings.days;
+        app.settings.form = this.settings.form;
+        app.settings.input = this.settings.input;
+        app.settings.buttons = this.settings.buttons;
+
+    }
+
+    function nextMonth() {
+        month += 1;
+        if (month > 11) {
+            month = 0;
+            year += 1;
+        }
+        document.getElementById("Month").innerHTML = Months[month] + " " + year;
+        generateMonth();
+    }
+</script>
+
+@section Scripts{
+    <script src="~/js/Calender.js" asp-append-version="true"></script>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/Calender.css" />
+    </environment>
+}
+
+
+

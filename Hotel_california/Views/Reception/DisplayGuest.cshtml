@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Guest>
+@{
+    ViewData["Title"] = "DisplayGuest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <form method="post">
+        <label for="room">Enter room number</label>
+        <input for="room" type="number" id="room" name="roomo" />
+        <input href="#" type="submit" />
+    </form>
+</div>
+
+<div>
+    <table class="table">
+        <thread>
+            <tr>
+                @Html.DisplayNameFor(model => model.FName)
+            </tr>
+            <tr>
+                @Html.DisplayNameFor(model => model.LName)
+            </tr>
+            <tr>
+                @Html.DisplayNameFor(model => model.Age)
+            </tr>
+        </thread>
+    </table>
+</div>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelitem => item.FName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelitem => item.LName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelitem => item.Age)
+        </td>
+    </tr>
+}

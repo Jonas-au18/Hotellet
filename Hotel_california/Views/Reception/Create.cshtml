@@ -1,0 +1,31 @@
+﻿@model Booking
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div>
+    <form method="post">
+        <div>
+            <label asp-for="Day">Enter day</label>
+            <input asp-for="Day" />
+        </div>
+        <div>
+            <label asp-for="Month">Enter month</label>
+            <input asp-for="Month"/>
+        </div>
+        <div>
+            <label asp-for="RoomNr">Enter room number</label>
+            <input asp-for="RoomNr" />
+        </div>
+        <div>
+            <label asp-for="Adults">Enter number of adults</label>
+            <input asp-for="Adults" />
+        </div>
+        <div>
+            <label asp-for="Kids">Enter number of kids</label>
+            <input asp-for="Kids" />
+        </div>
+        <input href="#" class="date-button" type="submit"/>
+    </form>
+</div>
+
