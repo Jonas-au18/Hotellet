@@ -20,14 +20,14 @@
         {
             <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout">
-                <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
+                <button type="submit" class="nav-link w3-btn w3-round-large w3-hover-red text-light">Logout</button>
             </form>
         </li>
         }
         @if(!SignInManager.IsSignedIn(User))
             {
         <li class="nav-item">
-                <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                <a class="nav-link w3-btn w3-round-large w3-hover-green  text-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
             </li>
             }
         </ul>

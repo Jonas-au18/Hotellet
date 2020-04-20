@@ -8,41 +8,38 @@
     <form method="post">
         <label for="room">Enter room number</label>
         <input for="room" type="number" id="room" name="roomo" />
-        <input href="#" type="submit" />
+        <input  class="form-control" href="#" type="submit" />
     </form>
 </div>
 
-<div>
-    <table class="table">
+<table class="table border">
         <thread>
-            <tr>
+            <th>
                 @Html.DisplayNameFor(model => model.FName)
-            </tr>
-            <tr>
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.LName)
-            </tr>
-            <tr>
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Age)
-            </tr>
+            </th>
         </thread>
-    </table>
-</div>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelitem => item.FName)
-        </td>
-    </tr>
-    <tr>
-        <td>
-            @Html.DisplayFor(modelitem => item.LName)
-        </td>
-    </tr>
-    <tr>
-        <td>
-            @Html.DisplayFor(modelitem => item.Age)
-        </td>
-    </tr>
-}
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelitem => item.FName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelitem => item.LName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelitem => item.Age)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
