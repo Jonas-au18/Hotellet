@@ -1,4 +1,4 @@
-﻿* {
+﻿/** {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     list-style: none;
@@ -41,7 +41,6 @@ body {
     width: 100%;
 }
 
-/* Front - Calendar */
 .front {
     transform: rotateY(0deg);
 }
@@ -120,7 +119,6 @@ body {
         top: -4px;
     }
 
-/* Back - Event form */
 
 .back {
     height: 100%;
@@ -203,7 +201,6 @@ body {
             outline: none;
         }
 
-/* Flip animation */
 
 .flip {
     transform: rotateY(180deg);
@@ -211,4 +208,4 @@ body {
 
 .front, .back {
     backface-visibility: hidden;
-}
+}*/

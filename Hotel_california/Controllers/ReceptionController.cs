@@ -41,6 +41,9 @@ namespace Hotel_california.Controllers
                 {
                     Dinner = new DinnerPlan();
                 }
+
+                Dinner.Day = booking.Day;
+                Dinner.Month = booking.Month;
                 Dinner.ExpectedTotal += (booking.Adults + booking.Kids);
                 Dinner.ExpectedAdults += booking.Adults;
                 Dinner.ExpectedKids += booking.Kids;

@@ -13,7 +13,7 @@ namespace Hotel_california.Data
         public static void SeedData(ApplicationDbContext context, UserManager<ApplicationUser> userManager, ILogger log)
         {
             Seed(context, log);
-            SeedUsers(userManager, log,context);
+            SeedUsers(userManager, log);
         }
 
         private static void Seed(ApplicationDbContext context, ILogger log)
@@ -88,7 +88,7 @@ namespace Hotel_california.Data
             }
         }
 
-        public static void SeedUsers(UserManager<ApplicationUser> userManager, ILogger log,ApplicationDbContext context)
+        public static void SeedUsers(UserManager<ApplicationUser> userManager, ILogger log)
         {
             List<Claim> claims = new List<Claim>();
             var adminclaim = new Claim("Admin", "Yes");
@@ -99,27 +99,6 @@ namespace Hotel_california.Data
             claims.Add(kitchenClaim);
             claims.Add(WaiterClaim);
             claims.Add(ReceptionClaim);
-
-
-            const string adminUsername = "Admin";
-            const string adminPassword = "Password1";
-
-            if (userManager.FindByNameAsync(adminUsername).Result == null)
-            {
-                log.LogWarning("Seeding the admin user");
-                ApplicationUser user = new ApplicationUser
-                {
-                    UserName = adminUsername,
-                    Email = "",
-                    Name = "SystemAdmin",
-                };
-                IdentityResult result = userManager.CreateAsync(
-                    user,adminPassword).Result;
-                if (result.Succeeded)
-                {
-                    userManager.AddClaimsAsync(user, claims).Wait();
-                }
-            }
 
             const string KitchenUsername = "Kitchen";
             const string KitchenPassword = "Password1";
@@ -171,6 +150,26 @@ namespace Hotel_california.Data
                 if (result.Succeeded)
                 {
                     userManager.AddClaimAsync(user, ReceptionClaim).Wait();
+                }
+            }
+
+            const string adminUsername = "Admin";
+            const string adminPassword = "Password1";
+
+            if (userManager.FindByNameAsync(adminUsername).Result == null)
+            {
+                log.LogWarning("Seeding the admin user");
+                ApplicationUser user = new ApplicationUser
+                {
+                    UserName = adminUsername,
+                    Email = "",
+                    Name = "SystemAdmin",
+                };
+                IdentityResult result = userManager.CreateAsync(
+                    user, adminPassword).Result;
+                if (result.Succeeded)
+                {
+                    userManager.AddClaimsAsync(user, claims).Wait();
                 }
             }
         }

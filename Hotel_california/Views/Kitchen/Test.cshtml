@@ -5,12 +5,15 @@
 }
 
 <form method="post">
+    <center>
         <label asp-for="Day">Enter day</label>
         <input class="form-control  w3-input-border w3-animate-input" style="width:135px" asp-for="Day" class="form-control" />
         <label asp-for="Month">Enter month</label>
         <input class="form-control  w3-input-border w3-animate-input" style="width:135px" asp-for="Month" class="form-control" />
-        <br/>
+        <br />
         <input href="#" class="w3-btn w3-light-grey w3-hover-green w3-round" type="submit" />
+        <input onclick="refresh()" value="Refresh" class="w3-btn w3-light-grey w3-hover-green w3-round" />
+    </center>
 </form>
 
 
@@ -50,3 +53,8 @@
     </tbody>
 </table>
 
+<script>
+    function refresh() {
+        window.location.reload()
+    }
+</script>
