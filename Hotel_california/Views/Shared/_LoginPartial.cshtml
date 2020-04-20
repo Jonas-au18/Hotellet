@@ -6,7 +6,7 @@
         @if (User.HasClaim("Admin", "Yes"))
         {
             <li class="nav-item">
-                <form class="form-inline" asp-area="" asp-controller="Home" asp-action="Index">
+                <form class="form-inline" asp-area="" asp-controller="Home" asp-action="AdminPage">
                     <button type="submit" class="nav-link btn btn-link text-dark">Return to admin</button>
                 </form>
             </li>
@@ -24,7 +24,7 @@
             </form>
         </li>
         }
-        else
+        @if(!SignInManager.IsSignedIn(User))
             {
         <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>

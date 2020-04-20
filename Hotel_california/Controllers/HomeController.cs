@@ -12,6 +12,7 @@ namespace Hotel_california.Controllers
 {
     public class HomeController : Controller
     {
+        public string returnUrl { get; set; }
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -21,7 +22,35 @@ namespace Hotel_california.Controllers
 
         public IActionResult Index()
         {
+            if (User.HasClaim("Admin", "Yes"))
+            {
+                returnUrl = Url.Action("AdminPage", "Home");
+                return LocalRedirect(returnUrl);
+            }
+            if (User.HasClaim("Waiter", "Yes"))
+            {
+                returnUrl = Url.Action("Waiter", "Waiter");
+                return LocalRedirect(returnUrl);
+            }
+
+            if (User.HasClaim("Reception", "Yes"))
+            {
+                returnUrl = Url.Action("Index", "Reception");
+                return LocalRedirect(returnUrl);
+            }
+
+            if (User.HasClaim("Kitchen", "Yes"))
+            {
+                returnUrl = Url.Action("Test", "Kitchen");
+                return LocalRedirect(returnUrl);
+            }
+
             return LocalRedirect("/Identity/Account/Login");
+        }
+
+        public IActionResult AdminPage()
+        {
+            return View();
         }
 
         public IActionResult Privacy()

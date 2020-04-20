@@ -14,6 +14,12 @@ namespace Hotel_california.Areas.Identity.Pages.Account.Manage
         public string returnUrl { get; set; }
         public IActionResult OnGet()
         {
+
+            if (User.HasClaim("Admin", "Yes"))
+            {
+                returnUrl = Url.Action("AdminPage", "Home");
+                return LocalRedirect(returnUrl);
+            }
             if (User.HasClaim("Waiter", "Yes"))
             {
                 returnUrl = Url.Action("Waiter", "Waiter");
@@ -30,11 +36,6 @@ namespace Hotel_california.Areas.Identity.Pages.Account.Manage
             {
                 returnUrl = Url.Action("Test", "Kitchen");
                 return LocalRedirect(returnUrl);
-            }
-
-            if (User.HasClaim("Admin", "Yes"))
-            {
-                return LocalRedirect("Login");
             }
 
             return LocalRedirect("Login");

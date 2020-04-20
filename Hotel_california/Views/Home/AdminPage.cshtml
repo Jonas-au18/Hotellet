@@ -6,16 +6,23 @@
 
 <div>
     <div>
-        <button type="submit" asp-action="Test" asp-controller="Kitchen">Kitchen View</button>
+        <form asp-action="Test" asp-controller="Kitchen">
+            <button type="submit" class="nav-link btn btn-link text-dark">Kitchen View</button>
+        </form>
     </div>
     <div>
-        <button type="submit" asp-controller="Reception" asp-action="Index">Reception View</button>
+        <form class="form-inline" asp-controller="Reception" asp-action="Index">
+            <button type="submit" class="nav-link btn btn-link text-dark">Reception View</button>
+        </form>
     </div>
     <div>
-        <button type="submit" asp-controller="Waiter" asp-action="Waiter">Waiter View</button>
+        <form class="form-inline" asp-controller="Waiter" asp-action="Waiter">
+            <button type="submit" class="nav-link btn btn-link text-dark">Waiter View</</button>
+        </form>
     </div>
     <div>
-        <button type="submit" asp-area="Identity" asp-page="/Account/Register">Register new user</button>
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Register">
+            <button type="submit" class="nav-link btn btn-link text-dark">Register new user</button>
+        </form>
     </div>
 </div>
-
