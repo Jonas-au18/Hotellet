@@ -7,12 +7,12 @@
 <form method="post">
     <center>
         <label asp-for="Day">Enter day</label>
-        <input class="form-control  w3-input-border w3-animate-input" style="width:135px" asp-for="Day" class="form-control" />
+        <input class="form-control  w3-input-border w3-animate-input" style="width:135px" asp-for="Day" class="form-control" placeholder="1-31"/>
         <label asp-for="Month">Enter month</label>
-        <input class="form-control  w3-input-border w3-animate-input" style="width:135px" asp-for="Month" class="form-control" />
+        <input class="form-control  w3-input-border w3-animate-input" style="width:135px" asp-for="Month" class="form-control" placeholder="1-12" />
         <br />
-        <input href="#" class="w3-btn w3-light-grey w3-hover-green w3-round" type="submit" />
-        <input onclick="refresh()" value="Refresh" class="w3-btn w3-light-grey w3-hover-green w3-round" />
+        <input href="#" class="w3-btn w3-light-grey w3-hover-green w3-round" type="submit" /><br/><br/>
+        <input onclick="refresh()" value="Refresh" class="w3-btn w3-light-grey w3-hover-green w3-round" type="submit"/>
     </center>
 </form>
 
@@ -21,12 +21,24 @@
 <table class="table border-bottom">
     <thead>
         <tr>
-            <th>Expected total</th>
-            <th>Expected adults</th>
-            <th>Expected Kids</th>
-            <th>Checked in total</th>
-            <th>Expected adults</th>
-            <th>Expected Kids</th>
+            <th class=""><i class="fas fa-user-friends" style="font-size: 36px"></i><br />
+                <a> total</a>
+                </th>
+            <th><i class="fas fa-user align-content-center" style="font-size: 36px"></i><br />
+                <a>Expected adults </a>
+                </th>
+            <th><i class="fas fa-baby" style="font-size: 36px"></i><br />
+                <a>Expected Kids </a>
+            </th>
+            <th><i class="fas fa-user-friends" style="font-size: 36px"></i><br />
+                <a>Checked in total </a>
+                </th>
+            <th><i class="fas fa-user" style="font-size: 36px"></i><br />
+                <a>Adults checked in</a>
+                </th>
+            <th><i class="fas fa-baby" style="font-size: 36px"></i><br />
+                <a>Kids checked in</a>
+                </th>
         </tr>
     </thead>
     <tbody>
