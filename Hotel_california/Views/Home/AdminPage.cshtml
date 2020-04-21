@@ -8,31 +8,31 @@
 
 <div class="container">
     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-        <form asp-action="Test" asp-controller="Kitchen">
-            <button class="w3-btn w3-light-grey w3-hover-green w3-round btn-link nav-link" type="submit">
-                <i class="fas fa-utensils" style="font-size: 36px"></i><br/>Kitchen View
-            </button>
-        </form>
+            <form asp-action="Kitchen" asp-controller="Kitchen">
+                <button class="w3-btn w3-light-grey w3-hover-green w3-round btn-link nav-link" type="submit">
+                    <i class="fas fa-utensils" style="font-size: 36px"></i><br />Kitchen View
+                </button>
+            </form>
+        </div>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <form class="form-inline" asp-controller="Reception" asp-action="Index">
+                <button class="w3-btn w3-light-grey w3-hover-green w3-round btn-link nav-link" type="submit">
+                    <i class="fas fa-concierge-bell" style="font-size: 36px"></i><br />Reception View
+                </button>
+            </form>
+        </div>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <form class="form-inline" asp-controller="Waiter" asp-action="Waiter">
+                <button class="w3-btn w3-light-grey w3-hover-green w3-round btn-link nav-link" type="submit">
+                    <i class="fas fa-glass-martini-alt" style="font-size: 36px"></i><br />Waiter View
+                </button>
+            </form>
+        </div>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Register">
+                <button class="w3-btn w3-light-grey w3-hover-green w3-round btn-link nav-link" type="submit">
+                    <i class="fas fa-user" style="font-size: 36px"></i><br />Register new user
+                </button>
+            </form>
+        </div>
     </div>
-    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-        <form class="form-inline" asp-controller="Reception" asp-action="Index">
-            <button class="w3-btn w3-light-grey w3-hover-green w3-round btn-link nav-link" type="submit">
-                <i class="fas fa-concierge-bell" style="font-size: 36px"></i><br/>Reception View
-            </button>
-        </form>
-    </div>
-    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-        <form class="form-inline" asp-controller="Waiter" asp-action="Waiter">
-            <button class="w3-btn w3-light-grey w3-hover-green w3-round btn-link nav-link" type="submit">
-                <i class="fas fa-glass-martini-alt" style="font-size: 36px"></i><br/>Waiter View
-            </button>
-        </form>
-    </div>
-    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Register">
-            <button class="w3-btn w3-light-grey w3-hover-green w3-round btn-link nav-link" type="submit">
-                <i class="fas fa-user" style="font-size: 36px"></i><br/>Register new user
-            </button>
-        </form>
-    </div>
-</div>

@@ -41,7 +41,7 @@ namespace Hotel_california.Controllers
 
             if (User.HasClaim("Kitchen", "Yes"))
             {
-                returnUrl = Url.Action("Test", "Kitchen");
+                returnUrl = Url.Action("Kitchen", "Kitchen");
                 return LocalRedirect(returnUrl);
             }
 

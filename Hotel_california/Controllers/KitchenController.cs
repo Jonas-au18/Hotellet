@@ -18,19 +18,14 @@ namespace Hotel_california.Controllers
         {
             _context = context;
         }
-        public IActionResult  Test()
+        public IActionResult  Kitchen()
         {
         
             return View();
         }
-        public IActionResult Test2()
-        {
-
-            return View();
-        }
 
         [HttpPost]
-        public async Task<IActionResult> Test([Bind("Day,Month")]DinnerPlan request)
+        public async Task<IActionResult> Kitchen([Bind("Day,Month")]DinnerPlan request)
         {
             var Plan = await _context.DinnerPlans.FirstOrDefaultAsync(m => m.Day == request.Day && m.Month == request.Month);
             return View(Plan);
