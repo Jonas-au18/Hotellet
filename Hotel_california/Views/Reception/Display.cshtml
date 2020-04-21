@@ -8,7 +8,7 @@
         <div>
             <form method="post">
                 <label for="day">Enter day</label>
-                <input class="form-control  w3-input-border w3-animate-input" style="width:135px" for="day" type="number" id="day" name="day" placeholder="0-31" />
+                <input class="form-control  w3-input-border w3-animate-input" style="width:135px" for="day" type="number" id="day" name="day" placeholder="1-31" />
                 <label for="month">Enter month</label>
                 <input class="form-control  w3-input-border w3-animate-input" style="width:135px" for="month" type="number" id="month" name="month" placeholder="1-12" />
                 <br><br>
@@ -22,12 +22,15 @@
     <thread>
         <tr>
             <th>
+                <i class="fas fa-hotel" style="font-size: 36px"></i><br/>
                 @Html.DisplayNameFor(model => model.RoomNr)
             </th>
             <th>
+                <i class="fas fa-user" style="font-size: 36px"></i><br />
                 @Html.DisplayNameFor(model => model.Adults)
             </th>
             <th>
+                <i class="fas fa-baby" style="font-size: 36px"></i><br />
                 @Html.DisplayNameFor(model => model.Kids)
             </th>
         </tr>

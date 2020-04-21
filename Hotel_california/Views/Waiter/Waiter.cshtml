@@ -9,15 +9,15 @@
     <form asp-action="Create">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <label asp-for="RoomNr" class="control-label"></label>
-        <input asp-for="RoomNr" class="form-control  w3-input-border w3-animate-input" style="width: 135px"/>
+        <input asp-for="RoomNr" class="form-control  w3-input-border w3-animate-input" placeholder="eks. 200" style="width: 135px"/>
         <span asp-validation-for="RoomNr" class="text-danger"></span>
 
         <label asp-for="Adults" class="control-label"></label>
-        <input asp-for="Adults" class="form-control  w3-input-border w3-animate-input" style="width: 135px"/>
+        <input asp-for="Adults" class="form-control  w3-input-border w3-animate-input" placeholder="eks. 2" style="width: 135px"/>
         <span asp-validation-for="Adults" class="text-danger"></span>
 
         <label asp-for="Kids" class="control-label"></label>
-        <input asp-for="Kids" class="form-control  w3-input-border w3-animate-input" style="width: 135px"/>
+        <input asp-for="Kids" class="form-control  w3-input-border w3-animate-input" placeholder="eks. 3" style="width: 135px"/>
         <span asp-validation-for="Kids" class="text-danger"></span>
 
         <br/>
