@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -25,26 +26,38 @@ namespace Hotel_california.Data
                 var Plans = new List<DinnerPlan>();
                 m = new DinnerPlan()
                 {
-                    Day = 20,
+                    Day = 25,
                     Month = 4,
-                    ExpectedAdults = 20,
-                    ExpectedKids = 20,
-                    ExpectedTotal = 40,
-                    CheckedInAdults = 2,
-                    CheckedInKids = 2,
-                    CheckedInTotal = 4
+                    ExpectedAdults = 120,
+                    ExpectedKids = 40,
+                    ExpectedTotal = 160,
+                    CheckedInAdults = 0,
+                    CheckedInKids = 0,
+                    CheckedInTotal = 0
                 };
                 Plans.Add(m);
                 m = new DinnerPlan()
                 {
-                    Day = 21,
+                    Day = 26,
                     Month = 4,
-                    ExpectedAdults = 20,
-                    ExpectedKids = 20,
-                    ExpectedTotal = 40,
-                    CheckedInAdults = 5,
-                    CheckedInKids = 10,
-                    CheckedInTotal = 14
+                    ExpectedAdults = 200,
+                    ExpectedKids = 150,
+                    ExpectedTotal = 350,
+                    CheckedInAdults = 0,
+                    CheckedInKids = 0,
+                    CheckedInTotal = 0
+                };
+                Plans.Add(m);
+                m = new DinnerPlan()
+                {
+                    Day = 28,
+                    Month = 4,
+                    ExpectedAdults = 180,
+                    ExpectedKids = 120,
+                    ExpectedTotal = 300,
+                    CheckedInAdults = 0,
+                    CheckedInKids = 0,
+                    CheckedInTotal = 0
                 };
                 Plans.Add(m);
                 context.DinnerPlans.AddRange(Plans);
@@ -65,6 +78,33 @@ namespace Hotel_california.Data
 
                 };
                 Bookings.Add(b);
+                b = new Booking()
+                {
+                    Day = 21,
+                    Month = 4,
+                    Adults = 2,
+                    Kids = 4,
+                    RoomNr = 220
+                };
+                Bookings.Add(b);
+                b = new Booking()
+                {
+                    Day = 31,
+                    Month = 4,
+                    Adults = 1,
+                    Kids = 2,
+                    RoomNr = 100
+                };
+                Bookings.Add(b);
+                b = new Booking()
+                {
+                    Day = 5,
+                    Month = 5,
+                    Adults = 2,
+                    Kids = 1,
+                    RoomNr = 320
+                };
+                Bookings.Add(b);
                 context.Bookings.AddRange(Bookings);
             }
 
@@ -79,12 +119,43 @@ namespace Hotel_california.Data
                     RoomNum = 200,
                     Age = 12,
                     FName = "Tim",
+                    LName = "Timsen"
+                };
+                Guestlist.Add(a);
+                a = new Guest()
+                {
+                    RoomNum = 200,
+                    Age = 40,
+                    FName = "Hanne",
                     LName = "Timsen",
-                    IsAdult = false
+                };
+                Guestlist.Add(a);
+                a = new Guest()
+                {
+                    RoomNum = 200,
+                    Age = 42,
+                    FName = "Per",
+                    LName = "Timsen"
+                };
+                Guestlist.Add(a);
+                a = new Guest()
+                {
+                    RoomNum = 220,
+                    Age = 50,
+                    FName = "Jonathan",
+                    LName = "Eriksen"
+                };
+                Guestlist.Add(a);
+                a = new Guest()
+                {
+                    RoomNum = 100,
+                    Age = 31,
+                    FName = "Jonas",
+                    LName = "Nielsen"
                 };
                 Guestlist.Add(a);
                 context.Guests.AddRange(Guestlist);
-                context.SaveChangesAsync();
+                context.SaveChangesAsync().Wait();
             }
         }
 
@@ -173,5 +244,6 @@ namespace Hotel_california.Data
                 }
             }
         }
+
     }
 }

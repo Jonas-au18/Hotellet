@@ -74,6 +74,28 @@ namespace Hotel_california.Controllers
             return BadRequest();
         }
 
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Checkout([Bind("room")] int room)
+        {
+            var Guests = await _context.Guests.Where(m => m.RoomNum == room).ToListAsync();
+            if (Guests == null)
+            {
+                return NotFound();
+            }
+            foreach (var i in Guests)
+            {
+                _context.Guests.Remove(i);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         public async Task<IActionResult> Display()
         {
             return View(await _context.Bookings.ToListAsync());
