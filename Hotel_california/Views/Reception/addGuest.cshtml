@@ -8,22 +8,22 @@
     <form method="post">
         <div>
             <label asp-for="FName">Enter firstname</label>
-            <input asp-for="FName" class="w3-input w3-animate-input"style="width:135px" placeholder="eks. Tim" type="text" /><br/><br /><br />
+            <input asp-for="FName" class="w3-input w3-animate-input"style="width:135px" required placeholder="eks. Tim" /><br/><br /><br />
         </div>
         <div>
             <label asp-for="LName">Enter lastname</label>
-            <input asp-for="LName" class="w3-input w3-animate-input" style="width:135px" type="text" placeholder="eks. Hansen" /><br /><br /><br />
+            <input asp-for="LName" class="w3-input w3-animate-input" style="width:135px" placeholder="eks. Hansen" required /><br /><br /><br />
         </div>
         <div>
             <label asp-for="RoomNum">Enter room number</label>
-            <input asp-for="RoomNum" class="w3-input w3-animate-input" style="width:135px" type="text" placeholder="eks. 101"/><br /><br /><br />
+            <input asp-for="RoomNum" class="w3-input w3-animate-input" style="width:135px"  placeholder="eks. 101"/><br /><br /><br />
         </div>
         <div>
             <label asp-for="Age">Enter age</label>
-            <input asp-for="Age" class="w3-input w3-animate-input" style="width:135px" placeholder="1-100"  type="text" />
+            <input asp-for="Age" class="w3-input w3-animate-input" style="width:135px" placeholder="1-100"  />
         </div>
         <br><br>
-        <input href="#"  class="w3-btn w3-light-grey w3-hover-green w3-round" type="submit" />
+        <input class="w3-btn w3-light-grey w3-hover-green w3-round" type="submit" />
     </form>
 </div>
 </center>

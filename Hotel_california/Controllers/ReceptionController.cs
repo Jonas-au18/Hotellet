@@ -62,7 +62,7 @@ namespace Hotel_california.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> addGuest([Bind("Fname,Lname,RoomNum,Age")]Guest guest)
+        public async Task<IActionResult> addGuest([Bind("FName,LName,RoomNum,Age")]Guest guest)
         {
             if (ModelState.IsValid)
             {
@@ -113,9 +113,9 @@ namespace Hotel_california.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DisplayGuest([Bind("room")]int roomid)
+        public async Task<IActionResult> DisplayGuest([Bind("room")]int room)
         {
-            return View(await _context.Guests.Where(m=>m.RoomNum == roomid).ToListAsync());
+            return View(await _context.Guests.Where(m=>m.RoomNum == room).ToListAsync());
         }
     }
 }
