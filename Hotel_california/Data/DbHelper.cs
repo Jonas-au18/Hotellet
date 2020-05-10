@@ -60,6 +60,18 @@ namespace Hotel_california.Data
                     CheckedInTotal = 0
                 };
                 Plans.Add(m);
+                m = new DinnerPlan()
+                {
+                    Day = DateTime.Now.Day,
+                    Month = DateTime.Now.Month,
+                    ExpectedAdults = 120,
+                    ExpectedKids = 40,
+                    ExpectedTotal = 160,
+                    CheckedInAdults = 0,
+                    CheckedInKids = 0,
+                    CheckedInTotal = 0
+                };
+                Plans.Add(m);
                 context.DinnerPlans.AddRange(Plans);
             }
 
